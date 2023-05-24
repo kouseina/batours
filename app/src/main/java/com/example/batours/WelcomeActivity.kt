@@ -16,7 +16,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         btnWelcome = findViewById(R.id.btn_welcome)
         btnWelcome.setOnClickListener{
-            var intent = Intent(this,MainActivity::class.java)
+            var intent = Intent(this,LoginActivity::class.java)
             startActivity(intent)
         }
     }
