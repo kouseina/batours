@@ -9,15 +9,15 @@ import android.widget.AdapterView
 import android.widget.GridView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.batours.*
 import com.example.batours.GridRVAdapter
-import com.example.batours.GridViewModal
-import com.example.batours.R
 import com.example.batours.databinding.FragmentHomeBinding
+
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    lateinit var gvDestination: GridView
+    lateinit var gvDestination: ExpandableHeightGridView
     lateinit var destinationList: List<GridViewModal>
 
     // This property is only valid between onCreateView and
@@ -35,7 +35,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
         return root
     }
 
@@ -48,6 +47,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         gvDestination = view.findViewById(R.id.gv_destination)
+        gvDestination.isExpanded = true
         destinationList = ArrayList<GridViewModal>()
 
         // on below line we are adding data to
@@ -57,14 +57,18 @@ class HomeFragment : Fragment() {
             GridViewModal("Sahyang Heulut", R.drawable.img_destination2),
             GridViewModal("Gedung Sate Padang", R.drawable.img_destination1),
             GridViewModal("Sahyang Heulut", R.drawable.img_destination2),
+            GridViewModal("Gedung Sate", R.drawable.img_destination1),
+            GridViewModal("Sahyang Heulut", R.drawable.img_destination2),
+            GridViewModal("Gedung Sate Padang", R.drawable.img_destination1),
+            GridViewModal("Sahyang Heulut", R.drawable.img_destination2),
         )
 
         // on below line we are initializing our course adapter
         // and passing course list and context.
-        val courseAdapter = activity?.let { GridRVAdapter(destinationList = destinationList, it.applicationContext) }
+        val destinationAdapter = activity?.let { GridRVAdapter(destinationList = destinationList, it.applicationContext) }
 
         // on below line we are setting adapter to our grid view.
-        gvDestination.adapter = courseAdapter
+        gvDestination.adapter = destinationAdapter
 
         gvDestination.setOnTouchListener { _, event ->
 

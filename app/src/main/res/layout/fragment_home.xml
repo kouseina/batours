@@ -9,21 +9,21 @@
     <ScrollView
         android:fillViewport="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingHorizontal="20dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="left">
+            android:gravity="left"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="30dp">
 
             <TextView
                 android:id="@+id/tv_title1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:text="Batours"
                 android:fontFamily="@font/playfairdisplay_semibold"
                 android:textSize="42sp"
@@ -60,14 +60,14 @@
                 android:textSize="42sp"
                 android:textColor="@color/black_800" />
 
-            <GridView
+            <com.example.batours.ExpandableHeightGridView
                 android:layout_marginTop="20dp"
                 android:id="@+id/gv_destination"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:horizontalSpacing="20dp"
                 android:numColumns="2"
-                android:verticalSpacing="20dp" />
+                android:verticalSpacing="20dp"/>
 
         </LinearLayout>
 
