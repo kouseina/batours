@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.GridView
+import android.widget.ScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.batours.*
@@ -20,6 +21,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     lateinit var gvDestination: ExpandableHeightGridView
     lateinit var destinationList: List<GridViewModal>
+    lateinit var mainScrollview: ScrollView
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -50,6 +52,7 @@ class HomeFragment : Fragment() {
         gvDestination = view.findViewById(R.id.gv_destination)
         gvDestination.isExpanded = true
         destinationList = ArrayList<GridViewModal>()
+        mainScrollview = view.findViewById(R.id.main_scrollview)
 
         // on below line we are adding data to
         // our course list with image and course name.
