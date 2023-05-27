@@ -1,5 +1,6 @@
 package com.example.batours.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -81,7 +82,8 @@ class HomeFragment : Fragment() {
         gvDestination.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             // inside on click method we are simply displaying
             // a toast message with course name.
-            println("hllooo")
+            var intent = Intent(context, DetailActivity::class.java)
+            startActivity(intent)
         }
     }
 }

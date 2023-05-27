@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity">
+
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/footer">
+
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="left"
+            android:paddingTop="30dp"
+            android:paddingBottom="105dp">
+
+            <TextView
+                android:id="@+id/tv_title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:text="Gedung Sate"
+                android:fontFamily="@font/playfairdisplay_semibold"
+                android:textSize="42sp"
+                android:textColor="@color/black_800" />
+
+            <ImageView
+                android:id="@+id/img_welcome"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/img_detail"
+                android:scaleType="centerCrop"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kawah Putih adalah sebuah tempat wisata di Jawa Barat yang terletak di Desa Alam Endah, Kecamatan Rancabali, Kabupaten Bandung Jawa Barat yang terletak di kaki Gunung Patuha. Kawah putih merupakan sebuah danau yang terbentuk dari letusan Gunung Patuha. Tanah yang bercampur belerang di sekitar kawah ini berwarna putih, lalu warna air yang berada di kawah ini berwarna putih kehijauan, yang unik dari kawah ini adalah airnya kadang berubah warna."
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/sfprodisplay_regular"
+                    android:textSize="14sp"
+                    android:textColor="#505050" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/sfprodisplay_medium"
+                    android:textSize="14sp"
+                    android:textColor="#252525" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Jl. Raya Soreang Ciwidey, Ciwidey, Bandung, Jawa Barat 40973. Bandung."
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/sfprodisplay_regular"
+                    android:textSize="14sp"
+                    android:textColor="#505050" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/sfprodisplay_medium"
+                    android:textSize="14sp"
+                    android:textColor="#252525" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rp. 50.000"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/sfprodisplay_regular"
+                    android:textSize="14sp"
+                    android:textColor="#505050" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Additional Info"
+                    android:layout_marginTop="14dp"
+                    android:fontFamily="@font/sfprodisplay_medium"
+                    android:textSize="14sp"
+                    android:textColor="#252525" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lebih baik perjalanan menggunakan motor, karena jalan yang sempit dan terjat. Sulit dijangkau oleh mobil"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/sfprodisplay_regular"
+                    android:textSize="14sp"
+                    android:textColor="#505050" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:background="@color/white">
+
+        <Button
+            android:id="@+id/btn_welcome"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Google Maps"
+            android:textAllCaps="false"
+            android:fontFamily="@font/sfprodisplay_bold"
+            android:textColor="@color/white"
+            android:padding="13dp"
+            android:textSize="18sp"
+            app:backgroundTint="@null"
+            android:elevation="6dp"
+            android:background="@drawable/primary_button"
+            android:layout_marginRight="15dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:background="@drawable/secondary_button"
+            android:src="@drawable/ic_bookmark"
+            app:tint="@color/blue" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
