@@ -7,21 +7,191 @@
     android:padding="25dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Filter Data"
-        android:textSize="18sp"
-        android:fontFamily="@font/sfprodisplay_bold"
-        android:textColor="#383838" />
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Filter Data"
+            android:textSize="18sp"
+            android:fontFamily="@font/sfprodisplay_bold"
+            android:textColor="#383838" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Close"
+            android:textSize="16sp"
+            android:fontFamily="@font/sfprodisplay_medium"
+            android:textColor="@color/red" />
+
+    </LinearLayout>
 
     <TextView
         android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vehicle"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:fontFamily="@font/sfprodisplay_medium"
         android:textColor="#383838" />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/secondary_button"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="17dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Car"
+                android:maxLines="1"
+                android:textSize="14sp"
+                android:fontFamily="@font/sfprodisplay_regular"
+                android:textColor="@color/blue" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/filter_button_unselect"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="17dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Motorcycle"
+                android:maxLines="1"
+                android:textSize="14sp"
+                android:fontFamily="@font/sfprodisplay_regular"
+                android:textColor="@color/grey" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:textSize="16sp"
+        android:fontFamily="@font/sfprodisplay_medium"
+        android:textColor="#383838" />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/secondary_button"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="17dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pendidikan"
+                android:textSize="14sp"
+                android:maxLines="1"
+                android:fontFamily="@font/sfprodisplay_regular"
+                android:textColor="@color/blue" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/filter_button_unselect"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="17dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Religi"
+                android:maxLines="1"
+                android:textSize="14sp"
+                android:fontFamily="@font/sfprodisplay_regular"
+                android:textColor="@color/grey" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/filter_button_unselect"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="17dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Budaya"
+                android:maxLines="1"
+                android:textSize="14sp"
+                android:fontFamily="@font/sfprodisplay_regular"
+                android:textColor="@color/grey" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:textSize="16sp"
+        android:fontFamily="@font/sfprodisplay_medium"
+        android:textColor="#383838" />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/secondary_button"
+            android:paddingVertical="7dp"
+            android:paddingHorizontal="17dp">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Input Price Here"
+                android:background="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="@font/sfprodisplay_regular"
+                android:textColor="@color/blue" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -114,6 +114,21 @@
 
             </LinearLayout>
 
+            <Button
+                android:layout_marginTop="100dp"
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:textAllCaps="false"
+                android:fontFamily="@font/sfprodisplay_bold"
+                android:textColor="@color/white"
+                android:padding="13dp"
+                android:textSize="18sp"
+                app:backgroundTint="@null"
+                android:elevation="6dp"
+                android:background="@drawable/logout_button" />
+
         </LinearLayout>
 
     </ScrollView>
