@@ -49,6 +49,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:layout_marginRight="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/secondary_button"
@@ -67,7 +68,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginLeft="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/filter_button_unselect"
@@ -96,13 +96,17 @@
         android:fontFamily="@font/sfprodisplay_medium"
         android:textColor="#383838" />
 
-    <LinearLayout
-        android:layout_marginTop="10dp"
+    <com.google.android.flexbox.FlexboxLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:alignItems="stretch"
+        app:alignContent="stretch"
+        app:flexWrap="wrap">
 
         <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/secondary_button"
@@ -121,7 +125,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/filter_button_unselect"
@@ -140,7 +145,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/filter_button_unselect"
@@ -158,7 +163,7 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+    </com.google.android.flexbox.FlexboxLayout>
 
     <TextView
         android:layout_marginTop="25dp"
