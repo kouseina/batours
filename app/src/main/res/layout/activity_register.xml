@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="left"
-            android:paddingHorizontal="30dp">
+            android:paddingHorizontal="20dp">
 
             <TextView
                 android:layout_marginTop="60dp"
