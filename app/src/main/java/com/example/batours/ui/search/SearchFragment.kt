@@ -52,10 +52,14 @@ class SearchFragment : Fragment() {
         val dialog = Dialog(view.context)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(R.layout.filter_dialog_layout)
-
+        val btnDialogClose = dialog.findViewById(R.id.btn_close) as TextView
 
         btnFilter.setOnClickListener{view ->
             dialog.show()
+        }
+
+        btnDialogClose.setOnClickListener{view ->
+            dialog.dismiss()
         }
     }
 }
