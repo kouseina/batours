@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.batours.ui.home.HomeFragment
 
 // on below line we are creating an
 // adapter class for our grid view.
