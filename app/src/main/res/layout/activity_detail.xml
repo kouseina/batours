@@ -39,21 +39,21 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_title1"
+                android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:text="Gedung Sate"
+                android:text="..."
                 android:fontFamily="@font/playfairdisplay_semibold"
                 android:textSize="42sp"
                 android:textColor="@color/black_800" />
 
             <ImageView
-                android:id="@+id/img_welcome"
+                android:id="@+id/img"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/img_detail"
+                android:background="@color/grey"
                 android:scaleType="centerCrop"/>
 
             <LinearLayout
@@ -63,9 +63,10 @@
                 android:paddingHorizontal="20dp">
 
                 <TextView
+                    android:id="@+id/tv_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Kawah Putih adalah sebuah tempat wisata di Jawa Barat yang terletak di Desa Alam Endah, Kecamatan Rancabali, Kabupaten Bandung Jawa Barat yang terletak di kaki Gunung Patuha. Kawah putih merupakan sebuah danau yang terbentuk dari letusan Gunung Patuha. Tanah yang bercampur belerang di sekitar kawah ini berwarna putih, lalu warna air yang berada di kawah ini berwarna putih kehijauan, yang unik dari kawah ini adalah airnya kadang berubah warna."
+                    android:text="..."
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/sfprodisplay_regular"
                     android:textSize="14sp"
@@ -81,9 +82,10 @@
                     android:textColor="#252525" />
 
                 <TextView
+                    android:id="@+id/tv_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Jl. Raya Soreang Ciwidey, Ciwidey, Bandung, Jawa Barat 40973. Bandung."
+                    android:text="..."
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/sfprodisplay_regular"
                     android:textSize="14sp"
@@ -99,9 +101,10 @@
                     android:textColor="#252525" />
 
                 <TextView
+                    android:id="@+id/tv_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Rp. 50.000"
+                    android:text="..."
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/sfprodisplay_regular"
                     android:textSize="14sp"
@@ -117,9 +120,10 @@
                     android:textColor="#252525" />
 
                 <TextView
+                    android:id="@+id/tv_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lebih baik perjalanan menggunakan motor, karena jalan yang sempit dan terjat. Sulit dijangkau oleh mobil"
+                    android:text="..."
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/sfprodisplay_regular"
                     android:textSize="14sp"
@@ -145,7 +149,7 @@
         android:background="@color/white">
 
         <Button
-            android:id="@+id/btn_welcome"
+            android:id="@+id/btn_map"
             android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

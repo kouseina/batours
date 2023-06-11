@@ -1,4 +1,4 @@
-package com.example.batours.activities.bookmark
+package com.example.batours.tab.bookmark
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,12 +12,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.batours.*
 import com.example.batours.GridRVAdapter
 import com.example.batours.databinding.FragmentBookmarkBinding
+import com.example.batours.models.DestinationItem
 
 class BookmarkFragment : Fragment() {
 
     private var _binding: FragmentBookmarkBinding? = null
     lateinit var gvDestination : ExpandableHeightGridView
-    lateinit var destinationList : List<GridViewModal>
+    lateinit var destinationList : List<DestinationItem>
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -47,17 +48,10 @@ class BookmarkFragment : Fragment() {
 
         gvDestination = view.findViewById(R.id.gv_destination)
         gvDestination.isExpanded = true
-        destinationList = ArrayList<GridViewModal>()
+        destinationList = ArrayList<DestinationItem>()
 
         destinationList = listOf(
-            GridViewModal("Gedung Sate", R.drawable.img_destination1),
-            GridViewModal("Sahyang Heulut", R.drawable.img_destination2),
-            GridViewModal("Gedung Sate Padang", R.drawable.img_destination1),
-            GridViewModal("Sahyang Heulut", R.drawable.img_destination2),
-            GridViewModal("Gedung Sate", R.drawable.img_destination1),
-            GridViewModal("Sahyang Heulut", R.drawable.img_destination2),
-            GridViewModal("Gedung Sate Padang", R.drawable.img_destination1),
-            GridViewModal("Sahyang Heulut", R.drawable.img_destination2),
+            DestinationItem(id = 0, name = "Gedung Sate", image_url = "https://vervalyayasan.data.kemdikbud.go.id/upload/file/9F/9FD0/80640-7789672821873048630.jpg", category = "", description = "", maps_url = "", price = "", rating = ""),
         )
 
         val destinationAdapter = activity?.let { GridRVAdapter(destinationList = destinationList, it.applicationContext) }

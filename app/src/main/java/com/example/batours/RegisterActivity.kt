@@ -70,7 +70,7 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            RetrofitClient.instance.createUser(email, fullName, phone, password, "")
+            RetrofitClient.instance.createUser(email, fullName, phone, password, "", authHeader = RetrofitClient.BASIC_AUTH)
                 .enqueue(object: Callback<DefaultResponse>{
                     override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
                         Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()

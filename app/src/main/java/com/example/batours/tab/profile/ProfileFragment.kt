@@ -1,4 +1,4 @@
-package com.example.batours.activities.profile
+package com.example.batours.tab.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

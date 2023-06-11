@@ -1,5 +1,5 @@
 package com.example.batours
 
-data class GridViewModal (
+data class DestinationItem (
     val title: String,
-    val img: Int)
+    val img: String)

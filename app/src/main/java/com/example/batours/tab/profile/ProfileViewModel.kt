@@ -1,13 +1,12 @@
-package com.example.batours.activities.bookmark
+package com.example.batours.tab.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class BookmarkViewModel : ViewModel() {
-
+class ProfileViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "This is bookmark Fragment"
+        value = "This is profile Fragment"
     }
     val text: LiveData<String> = _text
 }

@@ -1,19 +1,25 @@
 package com.example.batours
 
 import android.content.Context
+import android.graphics.BitmapFactory
+import android.os.AsyncTask
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
+import com.example.batours.models.DestinationItem
+import java.net.URL
+
 
 // on below line we are creating an
 // adapter class for our grid view.
 internal class GridRVAdapter(
     // on below line we are creating two
     // variables for course list and context
-    private val destinationList: List<GridViewModal>,
+    private val destinationList: List<DestinationItem>,
     private val context: Context
 ) :
     BaseAdapter() {
@@ -61,10 +67,16 @@ internal class GridRVAdapter(
         tvTitle = convertView!!.findViewById(R.id.tv_title)
         tvDetail = convertView!!.findViewById(R.id.tv_detail)
         // on below line we are setting image for our course image view.
-        ivImg.setImageResource(destinationList.get(position).img)
+//        ivImg.setImageResource(destinationList.get(position).img)
+        Glide.with(context)
+            .load(destinationList.get(position).image_url)
+            .centerCrop()
+            .into(ivImg);
+
         // on below line we are setting text in our course text view.
-        tvTitle.setText(destinationList.get(position).title)
+        tvTitle.setText(destinationList.get(position).name)
         // at last we are returning our convert view.
+
         return convertView
     }
 }

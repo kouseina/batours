@@ -1,4 +1,4 @@
-package com.example.batours.activities.search
+package com.example.batours.tab.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

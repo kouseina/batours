@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.batours.activities.home.HomeFragment"
+        android:name="com.example.batours.tab.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.example.batours.activities.search.SearchFragment"
+        android:name="com.example.batours.tab.search.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_bookmark"
-        android:name="com.example.batours.activities.bookmark.BookmarkFragment"
+        android:name="com.example.batours.tab.bookmark.BookmarkFragment"
         android:label="@string/title_bookmark"
         tools:layout="@layout/fragment_bookmark" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.batours.activities.profile.ProfileFragment"
+        android:name="com.example.batours.tab.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

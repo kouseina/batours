@@ -57,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             try {
-                RetrofitClient.instance.userLogin(email, password)
+                RetrofitClient.instance.userLogin(email, password, authHeader = RetrofitClient.BASIC_AUTH)
                     .enqueue(object: Callback<LoginResponse> {
                         override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                             Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
@@ -67,7 +67,8 @@ class LoginActivity : AppCompatActivity() {
 
                             if(response.code() == 200){
 
-                                SharedPrefManager.getInstance(applicationContext).saveUser(response.body()?.data!!)
+                                SharedPrefManager.getInstance(applicationContext).saveUser(response.body()?.data)
+                                SharedPrefManager.getInstance(applicationContext).saveToken(response.body()?.token)
 
                                 Toast.makeText(applicationContext, "Selamat Datang", Toast.LENGTH_LONG).show()
 

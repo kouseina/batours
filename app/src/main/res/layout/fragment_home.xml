@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.home.HomeFragment">
+    tools:context=".tab.home.HomeFragment">
 
     <ScrollView
         android:id="@+id/main_scrollview"
@@ -61,6 +61,14 @@
                 android:textSize="42sp"
                 android:textColor="@color/black_800" />
 
+            <ProgressBar
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:id="@+id/progress_loader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="visible" />
 
             <com.example.batours.ExpandableHeightGridView
                 android:layout_marginTop="20dp"

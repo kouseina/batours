@@ -1,6 +1,7 @@
 package com.example.batours.api
 
 import android.util.Log
+import com.example.batours.storage.SharedPrefManager
 import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    private val AUTH = Credentials.basic("lokijuhy123123", "secret0123")
+    val BASIC_AUTH = Credentials.basic("lokijuhy123123", "secret0123")
 
     private const val BASE_URL = "https://express-api-modular-template-production.up.railway.app/api/v1/"
 
@@ -20,7 +21,7 @@ object RetrofitClient {
             val original = chain.request()
 
             val requestBuilder = original.newBuilder()
-                .addHeader("Authorization", AUTH)
+//                .addHeader("Authorization", BASIC_AUTH)
                 .method(original.method(), original.body())
 
             val request = requestBuilder.build()

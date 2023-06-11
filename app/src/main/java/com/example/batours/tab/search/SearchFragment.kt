@@ -1,4 +1,4 @@
-package com.example.batours.activities.search
+package com.example.batours.tab.search
 
 import android.app.Dialog
 import android.os.Bundle
