@@ -26,6 +26,7 @@ import com.example.batours.storage.SharedPrefManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.lang.Exception
 
 
 class HomeFragment : Fragment() {
@@ -192,7 +193,8 @@ class HomeFragment : Fragment() {
                         gvCategory.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
                             // inside on click method we are simply displaying
                             // a toast message with course name.
-                            Log.d("CategoryItem", "clicked")
+                            var intent = Intent(context, DetailCategoryActivity::class.java).putExtra("category", categoryList[position].category)
+                            startActivity(intent)
                         }
                     }
                 }

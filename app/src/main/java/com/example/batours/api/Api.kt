@@ -60,4 +60,10 @@ interface Api {
     fun getAllCategory(
         @Header("Authorization") authHeader: String,
     ): Call<AllCategoryResponse>
+
+    @GET("destinations/category/{CATEGORY}")
+    fun getDestinationByCategory(
+        @Header("Authorization") authHeader: String,
+        @Path("CATEGORY") category: String,
+    ):Call<AllDestinationResponse>
 }
