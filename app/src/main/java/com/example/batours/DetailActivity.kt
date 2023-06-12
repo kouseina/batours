@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.batours.api.RetrofitClient
+import com.example.batours.models.DefaultResponse
 import com.example.batours.models.DetailDestinationResponse
 import com.example.batours.storage.SharedPrefManager
 import retrofit2.Call
@@ -28,6 +29,7 @@ class DetailActivity : AppCompatActivity() {
     lateinit var tvPrice: TextView
     lateinit var tvRating: TextView
     lateinit var btnMap: Button
+    lateinit var imgBookmark: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,9 +45,14 @@ class DetailActivity : AppCompatActivity() {
         tvPrice = findViewById(R.id.tv_price)
         tvRating = findViewById(R.id.tv_rating)
         btnMap = findViewById(R.id.btn_map)
+        imgBookmark = findViewById(R.id.img_bookmark)
 
         tvBack.setOnClickListener{view ->
             onBackPressed()
+        }
+
+        imgBookmark.setOnClickListener{view ->
+            saveBookmark()
         }
 
         id = intent.getIntExtra("id", 0)
@@ -91,6 +98,25 @@ class DetailActivity : AppCompatActivity() {
                         }
                     }
                 }
+            })
+    }
+
+    private fun saveBookmark() {
+        RetrofitClient.instance.saveBookmark("Bearer ${SharedPrefManager.getInstance(applicationContext).token}", id =  id ?: 0)
+            .enqueue(object : Callback<DefaultResponse> {
+                override fun onResponse(
+                    call: Call<DefaultResponse>,
+                    response: Response<DefaultResponse>
+                ) {
+                    if(response.code() == 200) {
+                        Toast.makeText(applicationContext, "Berhasil disimpan", Toast.LENGTH_LONG).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
+                    Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
+                }
+
             })
     }
 }

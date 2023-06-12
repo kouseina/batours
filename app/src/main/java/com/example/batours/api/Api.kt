@@ -1,5 +1,6 @@
 package com.example.batours.api
 
+import com.example.batours.models.AllBookmarkResponse
 import com.example.batours.models.AllCategoryResponse
 import com.example.batours.models.AllDestinationResponse
 import com.example.batours.models.DefaultResponse
@@ -66,4 +67,15 @@ interface Api {
         @Header("Authorization") authHeader: String,
         @Path("CATEGORY") category: String,
     ):Call<AllDestinationResponse>
+
+    @GET("bookmarks/save/{ID}")
+    fun saveBookmark(
+        @Header("Authorization") authHeader: String,
+        @Path("ID") id: Int,
+    ):Call<DefaultResponse>
+
+    @GET("bookmarks")
+    fun getAllBookmark(
+        @Header("Authorization") authHeader: String,
+    ):Call<AllBookmarkResponse>
 }

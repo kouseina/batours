@@ -7,18 +7,27 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.batours.*
-import com.example.batours.adapters.DestinationGridRVAdapter
+import com.example.batours.adapters.BookmarkGridRVAdapter
+import com.example.batours.api.RetrofitClient
 import com.example.batours.databinding.FragmentBookmarkBinding
-import com.example.batours.models.DestinationItem
+import com.example.batours.models.AllBookmarkResponse
+import com.example.batours.models.BookmarkItem
+import com.example.batours.storage.SharedPrefManager
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class BookmarkFragment : Fragment() {
 
     private var _binding: FragmentBookmarkBinding? = null
-    lateinit var gvDestination : ExpandableHeightGridView
-    lateinit var destinationList : List<DestinationItem>
+    lateinit var gvBookmark : ExpandableHeightGridView
+    lateinit var bookmarkList : List<BookmarkItem>
+    lateinit var pbBookmark: ProgressBar
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -46,26 +55,53 @@ class BookmarkFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        gvDestination = view.findViewById(R.id.gv_destination)
-        gvDestination.isExpanded = true
-        destinationList = ArrayList<DestinationItem>()
+        gvBookmark = view.findViewById(R.id.gv_bookmark)
+        gvBookmark.isExpanded = true
+        pbBookmark = view.findViewById(R.id.pb_bookmark)
 
-        destinationList = listOf(
-            DestinationItem(id = 0, name = "Gedung Sate", image_url = "https://vervalyayasan.data.kemdikbud.go.id/upload/file/9F/9FD0/80640-7789672821873048630.jpg", category = "", description = "", maps_url = "", price = 0, rating = ""),
-        )
+        getAllBookmark()
+    }
 
-        val destinationAdapter = activity?.let { DestinationGridRVAdapter(destinationList = destinationList, it.applicationContext) }
-        gvDestination.adapter = destinationAdapter
+    private fun getAllBookmark() {
+        RetrofitClient.instance.getAllBookmark("Bearer ${context?.applicationContext?.let {
+            SharedPrefManager.getInstance(
+                it
+            ).token
+        }}",).enqueue(object : Callback<AllBookmarkResponse> {
+            override fun onResponse(
+                call: Call<AllBookmarkResponse>,
+                response: Response<AllBookmarkResponse>
+            ) {
+                pbBookmark.visibility = View.GONE
 
-        gvDestination.setOnTouchListener { _, event ->
+                if(response.code() == 200) {
+                    val data = response.body()?.data
 
-            // event action is set as ACTION_MOVE
-            event.action == MotionEvent.ACTION_MOVE
-        }
+                    if(data != null) {
+                        bookmarkList = data.reversed()
 
-        gvDestination.onItemClickListener = AdapterView.OnItemClickListener{_, _, position, _ ->
-            var intent = Intent(context, DetailActivity::class.java)
-            startActivity(intent)
-        }
+                        val bookmarkAdapter = activity?.let { BookmarkGridRVAdapter(bookmarkList = bookmarkList, it.applicationContext) }
+                        gvBookmark.adapter = bookmarkAdapter
+
+                        gvBookmark.setOnTouchListener { _, event ->
+
+                            // event action is set as ACTION_MOVE
+                            event.action == MotionEvent.ACTION_MOVE
+                        }
+
+                        gvBookmark.onItemClickListener = AdapterView.OnItemClickListener{ _, _, position, _ ->
+                            var intent = Intent(context, DetailActivity::class.java).putExtra("id", bookmarkList[position].destination.id)
+                            startActivity(intent)
+                        }
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<AllBookmarkResponse>, t: Throwable) {
+                pbBookmark.visibility = View.GONE
+                Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
+            }
+
+        })
     }
 }
