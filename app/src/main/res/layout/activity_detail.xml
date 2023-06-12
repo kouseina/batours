@@ -113,14 +113,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Additional Info"
+                    android:text="Rating"
                     android:layout_marginTop="14dp"
                     android:fontFamily="@font/sfprodisplay_medium"
                     android:textSize="14sp"
                     android:textColor="#252525" />
 
                 <TextView
-                    android:id="@+id/tv_info"
+                    android:id="@+id/tv_rating"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="..."

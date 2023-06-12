@@ -1,4 +1,4 @@
-package com.example.batours.tab.home
+package com.example.batours.tabs.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -14,10 +14,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.batours.*
-import com.example.batours.GridRVAdapter
+import com.example.batours.adapters.CategoryGridRVAdapter
+import com.example.batours.adapters.DestinationGridRVAdapter
 import com.example.batours.api.RetrofitClient
 import com.example.batours.databinding.FragmentHomeBinding
+import com.example.batours.models.AllCategoryResponse
 import com.example.batours.models.AllDestinationResponse
+import com.example.batours.models.CategoryItem
 import com.example.batours.models.DestinationItem
 import com.example.batours.storage.SharedPrefManager
 import retrofit2.Call
@@ -28,10 +31,19 @@ import retrofit2.Response
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
+    lateinit var mainScrollview: ScrollView
     lateinit var gvDestination: ExpandableHeightGridView
     lateinit var destinationList: List<DestinationItem>
-    lateinit var mainScrollview: ScrollView
-    lateinit var progressLoader: ProgressBar
+    lateinit var pbDestination: ProgressBar
+    lateinit var gvCategory: ExpandableHeightGridView
+    lateinit var categoryList: List<CategoryItem>
+    lateinit var pbCategory: ProgressBar
+
+    private val token: String = "Bearer ${context?.let {
+        SharedPrefManager.getInstance(
+            it
+        ).token
+    }}"
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -59,12 +71,19 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        mainScrollview = view.findViewById(R.id.main_scrollview)
+
         gvDestination = view.findViewById(R.id.gv_destination)
         gvDestination.isExpanded = true
-        mainScrollview = view.findViewById(R.id.main_scrollview)
-        progressLoader = view.findViewById(R.id.progress_loader)
+        pbDestination = view.findViewById(R.id.pb_destination)
 
-        getDestinationList()
+        gvCategory = view.findViewById(R.id.gv_category)
+        gvCategory.isExpanded = true
+        pbCategory = view.findViewById(R.id.pb_category)
+
+
+        getAllDestination()
+        getAllCategory()
 
         // on below line we are adding data to
         // our course list with image and course name.
@@ -80,30 +99,26 @@ class HomeFragment : Fragment() {
 //        )
     }
 
-    private fun getDestinationList() {
-        RetrofitClient.instance.getAllDestination("Bearer ${context?.let {
-            SharedPrefManager.getInstance(
-                it
-            ).token
-        }}").enqueue(object : Callback<AllDestinationResponse> {
+    private fun getAllDestination() {
+        RetrofitClient.instance.getPopularDestination(token).enqueue(object : Callback<AllDestinationResponse> {
 
             override fun onFailure(call: Call<AllDestinationResponse>, t: Throwable) {
                 Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
-                progressLoader.visibility = View.GONE
+                pbDestination.visibility = View.GONE
             }
 
             override fun onResponse(
                 call: Call<AllDestinationResponse>,
                 response: Response<AllDestinationResponse>
             ) {
-                progressLoader.visibility = View.GONE
+                pbDestination.visibility = View.GONE
 //                Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show()
-                Log.d("HomeFragment", response.body().toString())
+                Log.d("getAllDestination", response.body().toString())
 
                 if(response.code() == 200) {
                     val data = response.body()?.data
 
-                    Log.d("HomeFragment", data.toString())
+//                    Log.d("getAllDestination", data.toString())
 
                     if (data != null) {
 //                        var tempList = ArrayList<DestinationItem>()
@@ -117,7 +132,7 @@ class HomeFragment : Fragment() {
 
                         // on below line we are initializing our course adapter
                         // and passing course list and context.
-                        val destinationAdapter = activity?.let { GridRVAdapter(destinationList = destinationList, it.applicationContext) }
+                        val destinationAdapter = activity?.let { DestinationGridRVAdapter(destinationList = destinationList, it.applicationContext) }
 
                         // on below line we are setting adapter to our grid view.
                         gvDestination.adapter = destinationAdapter
@@ -138,6 +153,54 @@ class HomeFragment : Fragment() {
                         }
                     }
                 }
+            }
+
+        })
+    }
+
+    private fun getAllCategory() {
+        RetrofitClient.instance.getAllCategory(token).enqueue(object : Callback<AllCategoryResponse> {
+            override fun onResponse(
+                call: Call<AllCategoryResponse>,
+                response: Response<AllCategoryResponse>
+            ) {
+                pbCategory.visibility = View.GONE
+//                Toast.makeText(context, response.toString(), Toast.LENGTH_LONG).show()
+                Log.d("getAllCategory", response.body().toString())
+
+                if(response.code() == 200) {
+                    val data = response.body()?.data
+
+                    if (data != null) {
+                        categoryList = data
+
+                        // on below line we are initializing our course adapter
+                        // and passing course list and context.
+                        val categoryAdapter = activity?.let { CategoryGridRVAdapter(categoryList = categoryList, it.applicationContext) }
+
+                        // on below line we are setting adapter to our grid view.
+                        gvCategory.adapter = categoryAdapter
+
+                        gvCategory.setOnTouchListener { _, event ->
+
+                            // event action is set as ACTION_MOVE
+                            event.action == MotionEvent.ACTION_MOVE
+                        }
+
+                        // on below line we are adding on item
+                        // click listener for our grid view.
+                        gvCategory.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+                            // inside on click method we are simply displaying
+                            // a toast message with course name.
+                            Log.d("CategoryItem", "clicked")
+                        }
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<AllCategoryResponse>, t: Throwable) {
+                Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
+                pbCategory.visibility = View.GONE
             }
 
         })

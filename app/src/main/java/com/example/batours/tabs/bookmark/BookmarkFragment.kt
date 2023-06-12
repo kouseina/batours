@@ -1,4 +1,4 @@
-package com.example.batours.tab.bookmark
+package com.example.batours.tabs.bookmark
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,7 @@ import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.batours.*
-import com.example.batours.GridRVAdapter
+import com.example.batours.adapters.DestinationGridRVAdapter
 import com.example.batours.databinding.FragmentBookmarkBinding
 import com.example.batours.models.DestinationItem
 
@@ -51,10 +51,10 @@ class BookmarkFragment : Fragment() {
         destinationList = ArrayList<DestinationItem>()
 
         destinationList = listOf(
-            DestinationItem(id = 0, name = "Gedung Sate", image_url = "https://vervalyayasan.data.kemdikbud.go.id/upload/file/9F/9FD0/80640-7789672821873048630.jpg", category = "", description = "", maps_url = "", price = "", rating = ""),
+            DestinationItem(id = 0, name = "Gedung Sate", image_url = "https://vervalyayasan.data.kemdikbud.go.id/upload/file/9F/9FD0/80640-7789672821873048630.jpg", category = "", description = "", maps_url = "", price = 0, rating = ""),
         )
 
-        val destinationAdapter = activity?.let { GridRVAdapter(destinationList = destinationList, it.applicationContext) }
+        val destinationAdapter = activity?.let { DestinationGridRVAdapter(destinationList = destinationList, it.applicationContext) }
         gvDestination.adapter = destinationAdapter
 
         gvDestination.setOnTouchListener { _, event ->

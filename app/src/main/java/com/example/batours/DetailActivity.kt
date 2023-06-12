@@ -1,22 +1,22 @@
 package com.example.batours
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.batours.api.RetrofitClient
 import com.example.batours.models.DetailDestinationResponse
 import com.example.batours.storage.SharedPrefManager
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.Callback
+import retrofit2.Response
+
 
 class DetailActivity : AppCompatActivity() {
     var id: Int? = null
@@ -26,7 +26,7 @@ class DetailActivity : AppCompatActivity() {
     lateinit var img: ImageView
     lateinit var tvAddress: TextView
     lateinit var tvPrice: TextView
-    lateinit var tvInfo: TextView
+    lateinit var tvRating: TextView
     lateinit var btnMap: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +41,7 @@ class DetailActivity : AppCompatActivity() {
         img = findViewById(R.id.img)
         tvAddress = findViewById(R.id.tv_address)
         tvPrice = findViewById(R.id.tv_price)
-        tvInfo = findViewById(R.id.tv_info)
+        tvRating = findViewById(R.id.tv_rating)
         btnMap = findViewById(R.id.btn_map)
 
         tvBack.setOnClickListener{view ->
@@ -79,9 +79,16 @@ class DetailActivity : AppCompatActivity() {
                             .into(img);
 
                         tvDesc.text = data?.description
-                        tvPrice.text = data?.price
+                        tvPrice.text = (data?.price ?: 0).toString()
                         tvAddress.text = data?.category
-                        tvInfo.text = data?.rating
+                        tvRating.text = data?.rating
+
+                        btnMap.setOnClickListener { view ->
+                            val gmmIntentUri = Uri.parse(data?.maps_url)
+                            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                            mapIntent.setPackage("com.google.android.apps.maps")
+                            startActivity(mapIntent)
+                        }
                     }
                 }
             })

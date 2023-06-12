@@ -1,5 +1,6 @@
 package com.example.batours.api
 
+import com.example.batours.models.AllCategoryResponse
 import com.example.batours.models.AllDestinationResponse
 import com.example.batours.models.DefaultResponse
 import com.example.batours.models.DetailDestinationResponse
@@ -44,9 +45,19 @@ interface Api {
         @Query("filter") filterParam: String = "desc",
     ):Call<AllDestinationResponse>
 
+    @GET("destinations/popular")
+    fun getPopularDestination(
+        @Header("Authorization") authHeader: String,
+    ):Call<AllDestinationResponse>
+
     @GET("destinations/{ID}")
     fun getDetailDestination(
         @Header("Authorization") authHeader: String,
         @Path("ID") id: Int,
     ):Call<DetailDestinationResponse>
+
+    @GET("destinations/category")
+    fun getAllCategory(
+        @Header("Authorization") authHeader: String,
+    ): Call<AllCategoryResponse>
 }
