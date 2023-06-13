@@ -83,7 +83,7 @@ class HomeFragment : Fragment() {
         pbCategory = view.findViewById(R.id.pb_category)
 
 
-        getAllDestination()
+        getPopularDestination()
         getAllCategory()
 
         // on below line we are adding data to
@@ -100,7 +100,7 @@ class HomeFragment : Fragment() {
 //        )
     }
 
-    private fun getAllDestination() {
+    private fun getPopularDestination() {
         RetrofitClient.instance.getPopularDestination(token).enqueue(object : Callback<AllDestinationResponse> {
 
             override fun onFailure(call: Call<AllDestinationResponse>, t: Throwable) {

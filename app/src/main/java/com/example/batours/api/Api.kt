@@ -44,6 +44,7 @@ interface Api {
         @Header("Authorization") authHeader: String,
         @Query("column") columnParam: String = "rating",
         @Query("filter") filterParam: String = "desc",
+        @Query("category") categoryParam: String?,
     ):Call<AllDestinationResponse>
 
     @GET("destinations/popular")
