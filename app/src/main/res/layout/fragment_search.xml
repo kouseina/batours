@@ -57,7 +57,7 @@
                 <EditText
                     android:layout_marginLeft="12dp"
                     android:inputType="textEmailAddress"
-                    android:id="@+id/et_email"
+                    android:id="@+id/et_search"
                     android:hint="Where are you going?"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"

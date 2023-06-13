@@ -1,24 +1,20 @@
 package com.example.batours.tabs.search
 
 import android.app.AlertDialog
-import android.app.Dialog
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
+import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.batours.DetailActivity
@@ -36,6 +32,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
@@ -44,6 +41,7 @@ class SearchFragment : Fragment() {
     lateinit var gvDestination: ExpandableHeightGridView
     var destinationList = listOf <DestinationItem>()
     lateinit var pbDestination: ProgressBar
+    lateinit var etSearch: EditText
 
     private val token: String = "Bearer ${context?.let {
         SharedPrefManager.getInstance(
@@ -87,8 +85,20 @@ class SearchFragment : Fragment() {
         gvDestination = view.findViewById(R.id.gv_destination)
         gvDestination.isExpanded = true
         pbDestination = view.findViewById(R.id.pb_destination)
+        etSearch = view.findViewById(R.id.et_search)
 
         showAlertDialog()
+        etSearch.setOnEditorActionListener { v, actionId, event ->
+            var handled = false
+
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                getAllDestination()
+
+                handled = true
+            }
+
+            handled
+        }
 
     }
 
@@ -222,7 +232,7 @@ class SearchFragment : Fragment() {
 
                     if (data != null) {
 
-                        destinationList = data
+                        destinationList = data.filter { item -> item.name?.lowercase()?.contains(etSearch.text.toString().lowercase()) ?: false}
 
                         // on below line we are initializing our course adapter
                         // and passing course list and context.
