@@ -78,14 +78,14 @@ class RegisterActivity : AppCompatActivity() {
 
                     override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
                         if(response.code() == 200) {
-                            Toast.makeText(applicationContext, "Sukses registrasi", Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext, "Register succeed", Toast.LENGTH_LONG).show()
                             var intent = Intent(applicationContext,LoginActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(intent)
                         }
 
                         else {
-                            Toast.makeText(applicationContext, "Gagal", Toast.LENGTH_LONG).show()
+                            Toast.makeText(applicationContext, "Register fail", Toast.LENGTH_LONG).show()
                         }
                     }
 

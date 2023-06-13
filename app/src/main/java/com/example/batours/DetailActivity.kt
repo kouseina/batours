@@ -109,7 +109,7 @@ class DetailActivity : AppCompatActivity() {
                     response: Response<DefaultResponse>
                 ) {
                     if(response.code() == 200) {
-                        Toast.makeText(applicationContext, "Berhasil disimpan", Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, "Saved", Toast.LENGTH_LONG).show()
                     }
                 }
 

@@ -70,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
                                 SharedPrefManager.getInstance(applicationContext).saveUser(response.body()?.data)
                                 SharedPrefManager.getInstance(applicationContext).saveToken(response.body()?.token)
 
-                                Toast.makeText(applicationContext, "Selamat Datang", Toast.LENGTH_LONG).show()
+                                Toast.makeText(applicationContext, "Login succeed", Toast.LENGTH_LONG).show()
 
                                 val intent = Intent(applicationContext, MainActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -79,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
                             }
 
                             else if (response.code() == 204 || response.code() == 403){
-                                Toast.makeText(applicationContext, "Email atau Kata Sandi salah", Toast.LENGTH_LONG).show()
+                                Toast.makeText(applicationContext, "email or password is incorrect", Toast.LENGTH_LONG).show()
                             }
 
                             else{
