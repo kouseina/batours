@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/rectangle_rounded"
+    android:background="@color/white"
     android:padding="25dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -34,61 +34,48 @@
     </LinearLayout>
 
     <TextView
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vehicle"
+        android:text="Rating"
         android:textSize="16sp"
         android:fontFamily="@font/sfprodisplay_medium"
         android:textColor="#383838" />
 
-    <LinearLayout
-        android:layout_marginTop="10dp"
+    <com.google.android.material.chip.ChipGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cg_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="10dp"
+        app:singleSelection="true">
 
-        <LinearLayout
-            android:layout_marginRight="15dp"
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/secondary_button"
-            android:paddingVertical="7dp"
-            android:paddingHorizontal="17dp">
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:fontFamily="@font/sfprodisplay_regular"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeWidth="1dp"
+            android:text="Lowest"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Car"
-                android:maxLines="1"
-                android:textSize="14sp"
-                android:fontFamily="@font/sfprodisplay_regular"
-                android:textColor="@color/blue" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/filter_button_unselect"
-            android:paddingVertical="7dp"
-            android:paddingHorizontal="17dp">
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:fontFamily="@font/sfprodisplay_regular"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeWidth="1dp"
+            android:text="Highest"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Motorcycle"
-                android:maxLines="1"
-                android:textSize="14sp"
-                android:fontFamily="@font/sfprodisplay_regular"
-                android:textColor="@color/grey" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    </com.google.android.material.chip.ChipGroup>
 
     <TextView
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Category"
@@ -96,77 +83,73 @@
         android:fontFamily="@font/sfprodisplay_medium"
         android:textColor="#383838" />
 
-    <com.google.android.flexbox.FlexboxLayout
+    <com.google.android.material.chip.ChipGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cg_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:alignItems="stretch"
-        app:alignContent="stretch"
-        app:flexWrap="wrap">
+        android:layout_marginTop="10dp"
+        app:singleSelection="true">
 
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="15dp"
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/secondary_button"
-            android:paddingVertical="7dp"
-            android:paddingHorizontal="17dp">
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:fontFamily="@font/sfprodisplay_regular"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeWidth="1dp"
+            android:text="Cagar Alam"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pendidikan"
-                android:textSize="14sp"
-                android:maxLines="1"
-                android:fontFamily="@font/sfprodisplay_regular"
-                android:textColor="@color/blue" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="15dp"
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/filter_button_unselect"
-            android:paddingVertical="7dp"
-            android:paddingHorizontal="17dp">
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:fontFamily="@font/sfprodisplay_regular"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeWidth="1dp"
+            android:text="Budaya"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Religi"
-                android:maxLines="1"
-                android:textSize="14sp"
-                android:fontFamily="@font/sfprodisplay_regular"
-                android:textColor="@color/grey" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="10dp"
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/filter_button_unselect"
-            android:paddingVertical="7dp"
-            android:paddingHorizontal="17dp">
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:fontFamily="@font/sfprodisplay_regular"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeWidth="1dp"
+            android:text="Taman Hiburan"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Budaya"
-                android:maxLines="1"
-                android:textSize="14sp"
-                android:fontFamily="@font/sfprodisplay_regular"
-                android:textColor="@color/grey" />
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:fontFamily="@font/sfprodisplay_regular"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeWidth="1dp"
+            android:text="Tempat Ibadah"/>
 
-        </LinearLayout>
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:fontFamily="@font/sfprodisplay_regular"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeWidth="1dp"
+            android:text="Pusat Perbelanjaan"/>
 
-    </com.google.android.flexbox.FlexboxLayout>
+    </com.google.android.material.chip.ChipGroup>
 
     <TextView
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price"
@@ -174,30 +157,36 @@
         android:fontFamily="@font/sfprodisplay_medium"
         android:textColor="#383838" />
 
-    <LinearLayout
-        android:layout_marginTop="10dp"
+    <com.google.android.material.chip.ChipGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cg_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="10dp"
+        app:singleSelection="true">
 
-        <LinearLayout
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/secondary_button"
-            android:paddingVertical="7dp"
-            android:paddingHorizontal="17dp">
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:fontFamily="@font/sfprodisplay_regular"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeWidth="1dp"
+            android:text="Termurah"/>
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="Input Price Here"
-                android:background="@color/white"
-                android:textSize="14sp"
-                android:fontFamily="@font/sfprodisplay_regular"
-                android:textColor="@color/blue" />
+        <com.google.android.material.chip.Chip
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="14sp"
+            android:fontFamily="@font/sfprodisplay_regular"
+            app:chipBackgroundColor="@color/white"
+            app:chipStrokeWidth="1dp"
+            android:text="Termahal"/>
 
-        </LinearLayout>
-
-    </LinearLayout>
+    </com.google.android.material.chip.ChipGroup>
 
 </LinearLayout>
