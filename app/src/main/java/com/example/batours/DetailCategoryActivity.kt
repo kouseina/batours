@@ -1,6 +1,7 @@
 package com.example.batours
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -36,6 +37,7 @@ class DetailCategoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail_category)
 
         supportActionBar?.hide()
+        window.statusBarColor = Color.BLACK;
 
         mainScrollview = findViewById(R.id.main_scrollview)
 

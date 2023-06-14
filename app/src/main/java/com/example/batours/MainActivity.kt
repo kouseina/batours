@@ -1,5 +1,6 @@
 package com.example.batours
 
+import android.graphics.Color
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+        window.statusBarColor = Color.BLACK;
 
         val navView: BottomNavigationView = binding.navView
 

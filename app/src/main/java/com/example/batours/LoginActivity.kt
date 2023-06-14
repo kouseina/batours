@@ -1,6 +1,7 @@
 package com.example.batours
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -27,6 +28,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         supportActionBar?.hide()
+        window.statusBarColor = Color.BLACK;
 
         tvRegister = findViewById(R.id.tv_register)
         btnLogin = findViewById(R.id.btn_login)

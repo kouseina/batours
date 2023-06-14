@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:layout_marginTop="4dp"
-            android:text="Discover the beauty of Batu City. Let’s get started 😎"
+            android:text="Discover the beauty of Bandung City. Let’s get started 😎"
             android:fontFamily="@font/sfprodisplay_regular"
             android:textAlignment="center"/>
 

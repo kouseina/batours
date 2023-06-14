@@ -1,6 +1,7 @@
 package com.example.batours
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -36,6 +37,7 @@ class DetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
 
         supportActionBar?.hide()
+        window.statusBarColor = Color.BLACK;
 
         tvBack = findViewById(R.id.tv_back)
         tvTitle = findViewById(R.id.tv_title)

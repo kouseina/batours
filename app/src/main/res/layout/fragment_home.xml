@@ -8,6 +8,7 @@
 
     <ScrollView
         android:id="@+id/main_scrollview"
+        android:scrollbars="none"
         android:fillViewport="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -37,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:layout_marginTop="4dp"
-                android:text="Discover the beauty of Batu City"
+                android:text="Discover the beauty of Bandung City"
                 android:fontFamily="@font/sfprodisplay_regular"
                 android:textAlignment="textStart"/>
 
@@ -59,7 +60,7 @@
                 android:layout_marginTop="40dp"
                 android:text="Popular Destination"
                 android:fontFamily="@font/playfairdisplay_semibold"
-                android:textSize="42sp"
+                android:textSize="28sp"
                 android:textColor="@color/black_800" />
 
             <ProgressBar
@@ -87,7 +88,7 @@
                 android:layout_marginTop="40dp"
                 android:text="Category Destination"
                 android:fontFamily="@font/playfairdisplay_semibold"
-                android:textSize="42sp"
+                android:textSize="28sp"
                 android:textColor="@color/black_800" />
 
             <ProgressBar

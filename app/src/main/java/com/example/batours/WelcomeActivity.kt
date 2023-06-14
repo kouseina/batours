@@ -1,6 +1,7 @@
 package com.example.batours
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
@@ -28,6 +29,8 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
         supportActionBar?.hide()
+        window.statusBarColor = Color.BLACK;
+
 
         btnWelcome = findViewById(R.id.btn_welcome)
         btnWelcome.setOnClickListener{
