@@ -40,12 +40,6 @@ class HomeFragment : Fragment() {
     lateinit var categoryList: List<CategoryItem>
     lateinit var pbCategory: ProgressBar
 
-    private val token: String = "Bearer ${context?.let {
-        SharedPrefManager.getInstance(
-            it
-        ).token
-    }}"
-
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -101,7 +95,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun getPopularDestination() {
-        RetrofitClient.instance.getPopularDestination(token).enqueue(object : Callback<AllDestinationResponse> {
+        RetrofitClient.instance.getPopularDestination("Bearer ${context?.applicationContext?.let {
+            SharedPrefManager.getInstance(
+                it
+            ).token
+        }}").enqueue(object : Callback<AllDestinationResponse> {
 
             override fun onFailure(call: Call<AllDestinationResponse>, t: Throwable) {
                 Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
@@ -160,7 +158,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun getAllCategory() {
-        RetrofitClient.instance.getAllCategory(token).enqueue(object : Callback<AllCategoryResponse> {
+        RetrofitClient.instance.getAllCategory("Bearer ${context?.applicationContext?.let {
+            SharedPrefManager.getInstance(
+                it
+            ).token
+        }}").enqueue(object : Callback<AllCategoryResponse> {
             override fun onResponse(
                 call: Call<AllCategoryResponse>,
                 response: Response<AllCategoryResponse>

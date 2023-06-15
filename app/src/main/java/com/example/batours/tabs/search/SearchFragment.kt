@@ -11,6 +11,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.ScrollView
 import android.widget.TextView
@@ -38,9 +39,17 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     lateinit var btnFilter: Button
     private lateinit var mainScrollview: ScrollView
+
     lateinit var gvDestination: ExpandableHeightGridView
     var destinationList = listOf <DestinationItem>()
     lateinit var pbDestination: ProgressBar
+
+    lateinit var llRecommendationDestination: LinearLayout
+
+    lateinit var gvRecommendationDestination: ExpandableHeightGridView
+    var recommendationDestinationList = listOf <DestinationItem>()
+    lateinit var pbRecommendationDestination: ProgressBar
+
     lateinit var etSearch: EditText
 
     lateinit var alertDialog: AlertDialog
@@ -60,12 +69,6 @@ class SearchFragment : Fragment() {
     lateinit var cgPrice: ChipGroup
     lateinit var cpCheapest: Chip
     lateinit var cpMostExpensive: Chip
-
-    private val token: String = "Bearer ${context?.let {
-        SharedPrefManager.getInstance(
-            it
-        ).token
-    }}"
 
     private var columnParam: String? = null
     private var filterParam: String? = null
@@ -99,10 +102,16 @@ class SearchFragment : Fragment() {
 
         btnFilter = view.findViewById(R.id.btn_filer)
         mainScrollview = view.findViewById(R.id.main_scrollview)
+        llRecommendationDestination = view.findViewById(R.id.ll_recommendation_destination)
+
+        gvRecommendationDestination = view.findViewById(R.id.gv_recommendation_destination)
+        gvRecommendationDestination.isExpanded = true
+        pbRecommendationDestination = view.findViewById(R.id.pb_recommendation_destination)
 
         gvDestination = view.findViewById(R.id.gv_destination)
         gvDestination.isExpanded = true
         pbDestination = view.findViewById(R.id.pb_destination)
+
         etSearch = view.findViewById(R.id.et_search)
 
         showAlertDialog()
@@ -119,6 +128,7 @@ class SearchFragment : Fragment() {
             handled
         }
 
+        getRecommendationDestination()
     }
 
     private fun showAlertDialog() {
@@ -257,11 +267,73 @@ class SearchFragment : Fragment() {
         }
     }
 
+    private fun getRecommendationDestination() {
+        RetrofitClient.instance.getRecommendationDestination("Bearer ${context?.applicationContext?.let {
+            SharedPrefManager.getInstance(
+                it
+            ).token
+        }}")
+            .enqueue(object : Callback<AllDestinationResponse> {
+
+                override fun onFailure(call: Call<AllDestinationResponse>, t: Throwable) {
+                    Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
+                    pbRecommendationDestination.visibility = View.GONE
+                }
+
+                override fun onResponse(
+                    call: Call<AllDestinationResponse>,
+                    response: Response<AllDestinationResponse>
+                ) {
+                    pbRecommendationDestination.visibility = View.GONE
+
+                    if(response.code() == 200) {
+                        val data = response.body()?.data
+
+                        if (data != null) {
+
+                            if (data.isNotEmpty()) {
+                                llRecommendationDestination.visibility = View.VISIBLE
+                            }
+
+                            recommendationDestinationList = data
+
+                            // on below line we are initializing our course adapter
+                            // and passing course list and context.
+                            val recommendationDestinationAdapter = activity?.let { DestinationGridRVAdapter(destinationList = recommendationDestinationList, it.applicationContext) }
+
+                            // on below line we are setting adapter to our grid view.
+                            gvRecommendationDestination.adapter = recommendationDestinationAdapter
+
+                            gvRecommendationDestination.setOnTouchListener { _, event ->
+
+                                // event action is set as ACTION_MOVE
+                                event.action == MotionEvent.ACTION_MOVE
+                            }
+
+                            // on below line we are adding on item
+                            // click listener for our grid view.
+                            gvRecommendationDestination.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
+                                // inside on click method we are simply displaying
+                                // a toast message with course name.
+                                var intent = Intent(context, DetailActivity::class.java).putExtra("id", recommendationDestinationList[position].id)
+                                startActivity(intent)
+                            }
+                        }
+                    }
+                }
+
+            })
+    }
+
     private fun getAllDestination() {
         pbDestination.visibility = View.VISIBLE
         gvDestination.visibility = View.GONE
 
-        RetrofitClient.instance.getAllDestination(token, columnParam = columnParam ?: "rating", filterParam = filterParam ?: "desc", categoryParam = categoryParam)
+        RetrofitClient.instance.getAllDestination("Bearer ${context?.applicationContext?.let {
+            SharedPrefManager.getInstance(
+                it
+            ).token
+        }}", columnParam = columnParam ?: "rating", filterParam = filterParam ?: "desc", categoryParam = categoryParam, searchParam = etSearch.text.toString())
             .enqueue(object : Callback<AllDestinationResponse> {
 
             override fun onFailure(call: Call<AllDestinationResponse>, t: Throwable) {

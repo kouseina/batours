@@ -88,6 +88,43 @@
                 android:elevation="6dp"
                 android:background="@drawable/primary_button"/>
 
+            <LinearLayout
+                android:layout_marginTop="40dp"
+                android:id="@+id/ll_recommendation_destination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recommendation For You"
+                    android:fontFamily="@font/playfairdisplay_semibold"
+                    android:textSize="28sp"
+                    android:textColor="@color/black_800" />
+
+                <ProgressBar
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/pb_recommendation_destination"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="visible" />
+
+                <com.example.batours.ExpandableHeightGridView
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/gv_recommendation_destination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:horizontalSpacing="20dp"
+                    android:numColumns="2"
+                    android:verticalSpacing="20dp"/>
+
+            </LinearLayout>
+
             <ProgressBar
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
