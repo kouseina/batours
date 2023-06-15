@@ -45,9 +45,21 @@ class SearchFragment : Fragment() {
 
     lateinit var alertDialog: AlertDialog
     lateinit var btnDialogClose: TextView
+
     lateinit var cgRating: ChipGroup
+    lateinit var crLowest: Chip
+    lateinit var crHighest: Chip
+
     lateinit var cgCategory: ChipGroup
+    lateinit var ccCagarAlam: Chip
+    lateinit var ccBudaya: Chip
+    lateinit var ccTamanHiburan: Chip
+    lateinit var ccTempatIbadah: Chip
+    lateinit var ccPusatPerbelanjaan: Chip
+
     lateinit var cgPrice: ChipGroup
+    lateinit var cpCheapest: Chip
+    lateinit var cpMostExpensive: Chip
 
     private val token: String = "Bearer ${context?.let {
         SharedPrefManager.getInstance(
@@ -94,6 +106,7 @@ class SearchFragment : Fragment() {
         etSearch = view.findViewById(R.id.et_search)
 
         showAlertDialog()
+
         etSearch.setOnEditorActionListener { v, actionId, event ->
             var handled = false
 
@@ -111,9 +124,21 @@ class SearchFragment : Fragment() {
     private fun showAlertDialog() {
         val view = layoutInflater.inflate(R.layout.filter_dialog_layout, null)
         btnDialogClose = view.findViewById(R.id.btn_close)
+
         cgRating = view.findViewById(R.id.cg_rating)
+        crLowest = view.findViewById(R.id.cr_lowest)
+        crHighest = view.findViewById(R.id.cr_highest)
+
         cgCategory = view.findViewById(R.id.cg_category)
+        ccCagarAlam = view.findViewById(R.id.cc_cagar_alam)
+        ccBudaya = view.findViewById(R.id.cc_budaya)
+        ccTamanHiburan = view.findViewById(R.id.cc_taman_hiburan)
+        ccTempatIbadah = view.findViewById(R.id.cc_tempat_ibadah)
+        ccPusatPerbelanjaan = view.findViewById(R.id.cc_pusat_perbelanjaan)
+
         cgPrice = view.findViewById(R.id.cg_price)
+        cpCheapest = view.findViewById(R.id.cp_cheapest)
+        cpMostExpensive = view.findViewById(R.id.cp_most_expensive)
 
         val builder = AlertDialog.Builder(context, R.style.CustomAlertDialog)
         alertDialog = builder.setView(view).create()
@@ -131,84 +156,103 @@ class SearchFragment : Fragment() {
         }
 
         cgRating.setOnCheckedStateChangeListener { group, checkedIds ->
-            if(checkedIds.isNotEmpty()) {
-                val idx = checkedIds.first() - 1
+            println("checked id cg rating : ${group.checkedChipId}")
+            println("is lowest rating chip checked : ${crLowest.isChecked}")
+            println("is highest rating chip checked : ${crHighest.isChecked}")
 
-                println("index : $idx")
-                val cgItem = group.getChildAt(idx) as Chip
-
-                cgItem.setOnCheckedChangeListener { compoundButton, selected ->
-                    if (selected) {
-                        cgItem.setChipStrokeColorResource(R.color.blue)
-
-                        columnParam = "rating"
-
-                        when(idx) {
-                            0 -> filterParam = "asc"
-                            1 -> filterParam = "desc"
-                        }
-                    }
-
-                    else cgItem.setChipStrokeColorResource(R.color.grey)
-
-                }
-            }
-
-            else {
+            if(checkedIds.isEmpty()) {
                 columnParam = null
                 filterParam = null
+            }
+
+            crLowest.setOnCheckedChangeListener { _, selected ->
+                if (selected) {
+                    crLowest.setChipStrokeColorResource(R.color.blue)
+
+                    columnParam = "rating"
+                    filterParam = "asc"
+
+                    println("column param : ${columnParam}")
+                    println("filter param : ${filterParam}")
+                }
+
+                else crLowest.setChipStrokeColorResource(R.color.grey)
+            }
+
+            crHighest.setOnCheckedChangeListener { _, selected ->
+                if (selected) {
+                    crHighest.setChipStrokeColorResource(R.color.blue)
+
+                    columnParam = "rating"
+                    filterParam = "desc"
+
+                    println("column param : ${columnParam}")
+                    println("filter param : ${filterParam}")
+                }
+
+                else crHighest.setChipStrokeColorResource(R.color.grey)
             }
         }
 
         cgCategory.setOnCheckedStateChangeListener { group, checkedIds ->
-            if(checkedIds.isNotEmpty()) {
-                val idx = checkedIds.first() - 1 - cgRating.childCount
-                val cgItem = group.getChildAt(idx) as Chip
+            println("checked id cg rating : ${group.checkedChipId}")
+            println("is cagar alam category chip checked : ${ccCagarAlam.isChecked}")
+            println("is budaya category chip checked : ${ccBudaya.isChecked}")
+            println("is taman hiburan category chip checked : ${ccTamanHiburan.isChecked}")
+            println("is tempat ibadah category chip checked : ${ccTempatIbadah.isChecked}")
+            println("is pusat perbelanjaan category chip checked : ${ccPusatPerbelanjaan.isChecked}")
 
-                cgItem.setOnCheckedChangeListener { compoundButton, selected ->
-                    if (selected) {
-                        cgItem.setChipStrokeColorResource(R.color.blue)
-
-                        when(idx) {
-                            0 -> categoryParam = "Cagar Alam"
-                            1 -> categoryParam = "Budaya"
-                            2 -> categoryParam = "Taman Hiburan"
-                            3 -> categoryParam = "Tempat Ibadah"
-                            4 -> categoryParam = "Pusat Perbelanjaan"
-                        }
-                    }
-
-                    else cgItem.setChipStrokeColorResource(R.color.grey)
-                }
+            if(checkedIds.isEmpty()) {
+                categoryParam = null
             }
 
-            else categoryParam = null
+            listOf(ccCagarAlam, ccBudaya, ccTamanHiburan, ccTempatIbadah, ccPusatPerbelanjaan).map {
+                it.setOnCheckedChangeListener { _, selected ->
+                    if (selected) {
+                        it.setChipStrokeColorResource(R.color.blue)
+
+                        when (it) {
+                            ccCagarAlam -> categoryParam = "Cagar Alam"
+                            ccBudaya -> categoryParam = "Budaya"
+                            ccTamanHiburan -> categoryParam = "Taman Hiburan"
+                            ccTempatIbadah -> categoryParam = "Tempat Ibadah"
+                            ccPusatPerbelanjaan -> categoryParam = "Pusat Perbelanjaan"
+                        }
+
+                        println("category param : ${categoryParam}")
+                    }
+                    else it.setChipStrokeColorResource(R.color.grey)
+                }
+            }
         }
 
         cgPrice.setOnCheckedStateChangeListener { group, checkedIds ->
-            if(checkedIds.isNotEmpty()) {
-                val idx = checkedIds.first() - 1 - cgRating.childCount - cgCategory.childCount
-                val cgItem = group.getChildAt(idx) as Chip
+            println("checked id cg price : ${group.checkedChipId}")
+            println("is cheapest price chip checked : ${cpCheapest.isChecked}")
+            println("is most expensive price chip checked : ${cpMostExpensive.isChecked}")
 
-                cgItem.setOnCheckedChangeListener { compoundButton, selected ->
+            if(checkedIds.isEmpty()) {
+                columnParam = null
+                filterParam = null
+            }
+
+            listOf(cpCheapest, cpMostExpensive).map {
+                it.setOnCheckedChangeListener { _, selected ->
                     if (selected) {
-                        cgItem.setChipStrokeColorResource(R.color.blue)
+                        it.setChipStrokeColorResource(R.color.blue)
 
                         columnParam = "price"
 
-                        when(idx) {
-                            0 -> filterParam = "asc"
-                            1 -> filterParam = "desc"
+                        when (it) {
+                            cpCheapest -> filterParam = "asc"
+                            cpMostExpensive -> filterParam = "desc"
                         }
+
+                        println("column param : ${columnParam}")
+                        println("filter param : ${filterParam}")
                     }
-
-                    else cgItem.setChipStrokeColorResource(R.color.grey)
+                    else it.setChipStrokeColorResource(R.color.grey)
                 }
-            }
-
-            else {
-                columnParam = null
-                filterParam = null
             }
         }
     }

@@ -13,7 +13,8 @@ object RetrofitClient {
 
     val BASIC_AUTH = Credentials.basic("lokijuhy123123", "secret0123")
 
-    private const val BASE_URL = "https://express-api-modular-template-production.up.railway.app/api/v1/"
+//    private const val BASE_URL = "https://express-api-modular-template-production.up.railway.app/api/v1/"
+    private const val BASE_URL_2 = "https://mercurial-craft-389712.et.r.appspot.com/api/v1/"
 
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor { chain ->
@@ -36,7 +37,7 @@ object RetrofitClient {
         okHttpClient.addInterceptor(logging)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BASE_URL_2)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient.build())
             .build()

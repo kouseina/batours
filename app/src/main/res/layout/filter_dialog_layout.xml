@@ -51,6 +51,7 @@
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/cr_lowest"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,6 +63,7 @@
             android:text="Lowest"/>
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/cr_highest"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -92,6 +94,7 @@
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/cc_cagar_alam"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,6 +106,7 @@
             android:text="Cagar Alam"/>
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/cc_budaya"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,6 +118,7 @@
             android:text="Budaya"/>
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/cc_taman_hiburan"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -125,6 +130,7 @@
             android:text="Taman Hiburan"/>
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/cc_tempat_ibadah"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -136,6 +142,7 @@
             android:text="Tempat Ibadah"/>
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/cc_pusat_perbelanjaan"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -166,6 +173,7 @@
         app:singleSelection="true">
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/cp_cheapest"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -177,6 +185,7 @@
             android:text="Termurah"/>
 
         <com.google.android.material.chip.Chip
+            android:id="@+id/cp_most_expensive"
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
