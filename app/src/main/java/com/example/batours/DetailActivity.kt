@@ -37,7 +37,6 @@ class DetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail)
 
         supportActionBar?.hide()
-        window.statusBarColor = Color.BLACK;
 
         tvBack = findViewById(R.id.tv_back)
         tvTitle = findViewById(R.id.tv_title)

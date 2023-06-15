@@ -43,6 +43,12 @@ class SearchFragment : Fragment() {
     lateinit var pbDestination: ProgressBar
     lateinit var etSearch: EditText
 
+    lateinit var alertDialog: AlertDialog
+    lateinit var btnDialogClose: TextView
+    lateinit var cgRating: ChipGroup
+    lateinit var cgCategory: ChipGroup
+    lateinit var cgPrice: ChipGroup
+
     private val token: String = "Bearer ${context?.let {
         SharedPrefManager.getInstance(
             it
@@ -104,23 +110,23 @@ class SearchFragment : Fragment() {
 
     private fun showAlertDialog() {
         val view = layoutInflater.inflate(R.layout.filter_dialog_layout, null)
-        val btnDialogClose: TextView = view.findViewById(R.id.btn_close)
-        val cgRating: ChipGroup = view.findViewById(R.id.cg_rating)
-        val cgCategory: ChipGroup = view.findViewById(R.id.cg_category)
-        val cgPrice: ChipGroup = view.findViewById(R.id.cg_price)
+        btnDialogClose = view.findViewById(R.id.btn_close)
+        cgRating = view.findViewById(R.id.cg_rating)
+        cgCategory = view.findViewById(R.id.cg_category)
+        cgPrice = view.findViewById(R.id.cg_price)
 
         val builder = AlertDialog.Builder(context, R.style.CustomAlertDialog)
-        var dialog = builder.setView(view).create()
+        alertDialog = builder.setView(view).create()
 
         btnFilter.setOnClickListener{view ->
-            dialog.show()
+            alertDialog.show()
         }
 
         btnDialogClose.setOnClickListener{view ->
-            dialog.dismiss()
+            alertDialog.dismiss()
         }
 
-        dialog.setOnDismissListener {
+        alertDialog.setOnDismissListener {
             getAllDestination()
         }
 

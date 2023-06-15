@@ -27,7 +27,6 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         supportActionBar?.hide()
-        window.statusBarColor = Color.BLACK;
 
         tvLogin = findViewById(R.id.tv_login)
         btnRegister = findViewById(R.id.btn_register)

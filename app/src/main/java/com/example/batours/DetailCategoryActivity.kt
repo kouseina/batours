@@ -37,7 +37,6 @@ class DetailCategoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_detail_category)
 
         supportActionBar?.hide()
-        window.statusBarColor = Color.BLACK;
 
         mainScrollview = findViewById(R.id.main_scrollview)
 

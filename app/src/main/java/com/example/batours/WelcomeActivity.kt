@@ -29,7 +29,6 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
         supportActionBar?.hide()
-        window.statusBarColor = Color.BLACK;
 
 
         btnWelcome = findViewById(R.id.btn_welcome)
